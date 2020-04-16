@@ -1,52 +1,74 @@
 package test;
 
-import com.rccl.excalibur.automation.sample.tests.base_test_configs.MobileBaseSuiteDBEnabled;
-import com.rccl.mobile.shaadi.HomeScreen;
-import com.rccl.mobile.shaadi.Login;
-import com.rccl.mobile.shaadi.StartScreen;
-import io.qameta.allure.Description;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.sun.org.glassfish.gmbal.Description;
+import main.*;
+import org.junit.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.SessionId;
+import org.testng.asserts.SoftAssert;
 
-public class ShaadiCom extends MobileBaseSuiteDBEnabled {
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+public class ShaadiCom {
     private Login login;
     private StartScreen startscreen;
     private HomeScreen homeScreen;
+    private SoftAssert softAssert;
 
-    @BeforeEach
-    public void setUp() {
-        super.setUp();
-        session.getExtendedAppiumClient().uninstall("com.rccl.royalcaribbean.excalibur");
-        session.getExtendedAppiumClient().install((String) session.getSessionConfiguration().getCapabilities().get("app"), true, false);
-        session.getIosDriver().launchApp();
+    private AppiumDriver<MobileElement> driver ;
+    private final static String APP_PACKAGE_NAME = "com.shaadi.android";
+    private final static String APP_ACTIVITY_NAME = "com.shaadi.android.ui.main.MainActivity";
+
+    @BeforeClass
+    public void setUp() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0.0");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM, "Android");
+        capabilities.setCapability(MobileCapabilityType.UDID, "320080d5d4da8661");
+        capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
+        capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, APP_PACKAGE_NAME);
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, APP_ACTIVITY_NAME);
+
+        driver = new AppiumDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+        driver.launchApp();
+        softAssert = new SoftAssert();
     }
 
 
     @Test
     @Description("When guest on board and WiFi turn off then guest should be able to view WiFi turn off screen")
     public void testSample() throws Exception {
-        startscreen = new StartScreen(session);
-
+        startscreen = new StartScreen(driver);
         startscreen.verifyLogoExists();
-
         login = startscreen.loginToApp();
-
-        login.verifyUsernameExists();
-
+        Assert.assertTrue(login.verifyUsernameExists());
         login.inputUsername();
         login.inputPassword();
-
         homeScreen = login.clickLogin();
         homeScreen.skipLockdownPage();
         homeScreen.selectMyShaadiTab();
+        Assert.assertTrue(homeScreen.verifyMyShaadiTabTitle());
 
-        homeScreen.verifyMyShaadiTabTitle();
-
-        homeScreen.verifyPremiumMatch();
+        softAssert.assertTrue(homeScreen.verifyPremiumMatch());
         homeScreen.selectPremiumMatch();
 
-        homeScreen.verifyNewMatch();
+        softAssert.assertTrue(homeScreen.verifyNewMatch());
         homeScreen.selectNewMatch();
     }
 
+    @AfterClass
+    public void tearDown() {
+        driver.quit();
+    }
 }

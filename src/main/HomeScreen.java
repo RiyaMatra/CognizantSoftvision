@@ -1,17 +1,15 @@
-package main.shaadi;
+package main;
 
-import com.rccl.mobile.MobileBaseScreen;
-import com.rccl.unifiedframework.selenium.Session;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
 import java.util.List;
 
-public class HomeScreen extends MobileBaseScreen {
-
-
-    public HomeScreen(Session session) {
-        super(session);
+public class HomeScreen {
+    private AppiumDriver<MobileElement> driver ;
+    public HomeScreen(AppiumDriver<MobileElement>AppiumDriver) {
+        this.driver= this.driver;
     }
 
     @AndroidFindBy(id = "imgMyShaadi")
@@ -22,12 +20,6 @@ public class HomeScreen extends MobileBaseScreen {
 
     @AndroidFindBy(id = "menu_skip")
     private MobileElement skipLockdown;
-
-//    @AndroidFindBy(xpath = "/*[contains(@text, 'Premium Matches')]")
-//    private MobileElement premiumMatches;
-//
-//    @AndroidFindBy(xpath = "/*[contains(@text, 'New Matches')]")
-//    private MobileElement newMatches;
 
     @AndroidFindBy(id = "tvDashboard")
     private MobileElement myShaadiTabTitle;

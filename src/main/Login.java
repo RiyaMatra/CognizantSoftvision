@@ -1,15 +1,15 @@
-package main.shaadi;
+package main;
 
-import com.rccl.mobile.MobileBaseScreen;
-import com.rccl.unifiedframework.selenium.Session;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class Login extends MobileBaseScreen {
-
-
-    public Login(Session session) {
-        super(session);
+public class Login {
+    private AppiumDriver<MobileElement> driver ;
+    private final static String un = "riyamatra@gmail.com";
+    private final static String pw = "Onsite@2020";
+    public Login(AppiumDriver<MobileElement> driver) {
+        this.driver=driver;
     }
 
     @AndroidFindBy(id = "edt_username")
@@ -27,17 +27,17 @@ public class Login extends MobileBaseScreen {
 
     public void inputUsername() {
         username.clear();
-        username.sendKeys("riyamatra@gmail.com");
+        username.sendKeys(un);
     }
 
     public void inputPassword() {
         password.clear();
-        password.sendKeys("Onsite@2020");
+        password.sendKeys(pw);
     }
 
     public HomeScreen clickLogin() {
         login.click();
-        return new HomeScreen(getSession());
+        return new HomeScreen(driver);
     }
 
 }

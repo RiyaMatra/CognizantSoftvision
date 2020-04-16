@@ -1,15 +1,14 @@
-package main.shaadi;
+package main;
 
-import com.rccl.mobile.MobileBaseScreen;
-import com.rccl.unifiedframework.selenium.Session;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class StartScreen extends MobileBaseScreen {
+public class StartScreen {
 
-
-    public StartScreen(Session session) {
-        super(session);
+    private AppiumDriver<MobileElement> driver ;
+    public StartScreen(AppiumDriver<MobileElement> driver) {
+        this.driver=driver;
     }
 
         @AndroidFindBy(id = "btn_morph_login")
@@ -21,7 +20,7 @@ public class StartScreen extends MobileBaseScreen {
 
     public Login loginToApp() {
         login.click();
-        return new Login(getSession());
+        return new Login(driver);
     }
 
     public boolean verifyLogoExists(){
