@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8e59d4a-e4dd-4508-b8ed-0a7db2cb8f89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java_client_7_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/StartScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/ShaadiCom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SampleProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SampleProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AccountCreationScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BillingScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CartScreen.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HomeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/OrderHistoryScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ProductSelectionScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ShaadiCom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/CognizantSoftvision.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +32,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

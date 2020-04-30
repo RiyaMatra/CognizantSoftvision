@@ -3,31 +3,24 @@ package test;
 import com.sun.org.glassfish.gmbal.Description;
 import main.*;
 import org.junit.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.SessionId;
 import org.testng.asserts.SoftAssert;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class ShaadiCom {
+public class CognizantSoftvision {
     private Login login;
-    private StartScreen startscreen;
+    private ProductPage productPage;
     private HomeScreen homeScreen;
-    private SoftAssert softAssert;
-
     private AppiumDriver<MobileElement> driver ;
-    private final static String APP_PACKAGE_NAME = "com.shaadi.android";
-    private final static String APP_ACTIVITY_NAME = "com.shaadi.android.ui.main.MainActivity";
+    private final static String APP_PACKAGE_NAME = "com.amazon.mShop.android.shopping";
+    private final static String APP_ACTIVITY_NAME = "com.amazon.mShop.home.HomeActivity";
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
@@ -42,29 +35,20 @@ public class ShaadiCom {
 
         driver = new AppiumDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
         driver.launchApp();
-        softAssert = new SoftAssert();
     }
-
 
     @Test
     @Description("When guest on board and WiFi turn off then guest should be able to view WiFi turn off screen")
     public void testSample() throws Exception {
-        startscreen = new StartScreen(driver);
-        startscreen.verifyLogoExists();
-        login = startscreen.loginToApp();
-        Assert.assertTrue(login.verifyUsernameExists());
-        login.inputUsername();
-        login.inputPassword();
-        homeScreen = login.clickLogin();
-        homeScreen.skipLockdownPage();
-        homeScreen.selectMyShaadiTab();
-        Assert.assertTrue(homeScreen.verifyMyShaadiTabTitle());
-
-        softAssert.assertTrue(homeScreen.verifyPremiumMatch());
-        homeScreen.selectPremiumMatch();
-
-        softAssert.assertTrue(homeScreen.verifyNewMatch());
-        homeScreen.selectNewMatch();
+        login=new Login(driver);
+        Assert.assertTrue(login.verifySkipSignInExists());
+        homeScreen=login.clickSkipSignIn();
+        Assert.assertTrue("Homescreen is not displayed after Login page", homeScreen.verifyAmazonLogo());
+        Assert.assertTrue(homeScreen.verifySearchTextbox());
+        homeScreen.inputProductSearch();
+        System.out.println("The product serach list count found is: "+homeScreen.getProductSearchCount());
+        productPage = homeScreen.selectRandomProduct();
+        Assert.assertTrue("16 inches TV product is not viewed correctly", productPage.verifyProduct().contains("16 inches"));
     }
 
     @AfterClass
