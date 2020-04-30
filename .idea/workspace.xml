@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d8e59d4a-e4dd-4508-b8ed-0a7db2cb8f89" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HomeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ProductPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ShaadiCom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/CognizantSoftvision.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
